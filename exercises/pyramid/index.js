@@ -14,6 +14,43 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {}
+function pyramid(n, row = 1, level = '') {
+  //My Recursive Solution
+  if (row > n) {
+    return;
+  }
+  if (level.length === 2 * n - 1) {
+    console.log(level);
+    return pyramid(n, row + 1);
+  }
+
+  let pad = '';
+  for (let fill = 0; fill < n - row; fill++) {
+    pad += ' ';
+  }
+  let output = '';
+  for (let hash = 1; hash < row * 2; hash++) {
+    output += '#';
+  }
+  // level = pad + output + pad;
+
+  pyramid(n, row, pad + output + pad);
+}
+
+// //My First Solution
+// for (let row = 1; row <= n; row++) {
+//   let output = '';
+//   let pad = '';
+
+//   for (let fill = 0; fill < n - row; fill++) {
+//     pad += ' ';
+//   }
+//   for (let hash = 1; hash < row * 2; hash++) {
+//     output += '#';
+//   }
+//   console.log(pad + output + pad);
+// }
+// return;
+// }
 
 module.exports = pyramid;

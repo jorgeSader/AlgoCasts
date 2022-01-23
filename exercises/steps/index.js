@@ -17,6 +17,19 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+function steps(n) {
+  //my Original solution
+  for (let lineNum = 1; lineNum <= n; lineNum++) {
+    let output = '';
+    for (let hash = 1; hash <= lineNum; hash++) {
+      output += '#';
+    }
+    for (let fill = 0; fill < n - lineNum; fill++) {
+      output += ' ';
+    }
+    console.log(output);
+  }
+  return;
+}
 
 module.exports = steps;
