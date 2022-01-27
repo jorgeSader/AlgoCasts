@@ -138,9 +138,18 @@ class LinkedList {
     let newNode = new Node(data, previous.next);
     previous.next = newNode;
   }
+
   forEach(fn) {
     for (let i = 0; i < this.size(); i++) {
       fn(this.getAt(i));
+    }
+  }
+
+  *[Symbol.iterator]() {
+    let node = this.head;
+    while (node) {
+      yield node;
+      node = node.next;
     }
   }
 }

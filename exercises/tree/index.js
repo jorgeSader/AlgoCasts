@@ -10,8 +10,47 @@
 // on the tree class.  Each method should accept a
 // function that gets called with each element in the tree
 
-class Node {}
+class Node {
+  constructor(data, children = []) {
+    this.data = data;
+    this.children = children;
+  }
 
-class Tree {}
+  add(data) {
+    this.children.push(new Node(data));
+  }
+
+  remove(data) {
+    this.children = this.children.filter((node) => {
+      node !== data;
+    });
+  }
+}
+
+class Tree {
+  constructor(root = null) {
+    this.root = root;
+  }
+
+  traverseBF(fn) {
+    const q = [this.root];
+
+    while (q.length > 0) {
+      const node = q.shift();
+      q.push(...node.children);
+      fn(node);
+    }
+  }
+
+  traverseDF(fn) {
+    const q = [this.root];
+
+    while (q.length) {
+      const node = q.shift();
+      q.unshift(...node.children);
+      fn(node);
+    }
+  }
+}
 
 module.exports = { Tree, Node };
