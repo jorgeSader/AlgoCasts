@@ -15,8 +15,8 @@ class Queue {
   add(record) {
     return this.queue.unshift(record);
   }
-  remove() {
-    return this.queue.pop();
+  remove(idx = this.queue.length - 1) {
+    return this.queue.splice(idx, 1)[0];
   }
 }
 
